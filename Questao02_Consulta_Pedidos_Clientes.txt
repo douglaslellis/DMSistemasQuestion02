@@ -1,0 +1,10 @@
+SELECT 
+ C.Nome,
+ C.Cnpj,
+ P.Numero,
+ P.Data,
+ (CASE P.Valor WHEN NULL THEN 0 ELSE P.Valor END) AS 'Valor'
+FROM Clientes AS 'C'
+ LEFT JOIN Pedidos AS 'P' ON C.ClienteId = P.ClienteId
+ORDER BY
+ C.Nome ASC, P.Data DESC
